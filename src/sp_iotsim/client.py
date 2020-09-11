@@ -56,7 +56,7 @@ async def main(port: int, addr: str, max_packets: int, log_file: Path = None):
             print(data)
             print_stdout = sys.stdout # Save a reference to the original standard output
 
-            with open('data.txt', 'a') as f:
+            with open("data.txt", "a") as f:
                 sys.stdout = f # Change the standard output to the file we created.
                 print(data)
                 sys.stdout = print_stdout # Reset the standard output to its original value
