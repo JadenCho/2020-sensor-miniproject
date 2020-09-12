@@ -94,7 +94,7 @@ def cli():
         
         with open("data.json") as t:
             tdata = json.load(t)
-        df = pd.DataFrame(tdata)
+        #df = pd.DataFrame(tdata)
         #tempmedianlist = []
         #occupancymedianlist = []
         #with open("data.txt","r") as data:
