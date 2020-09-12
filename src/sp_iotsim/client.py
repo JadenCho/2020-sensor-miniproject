@@ -20,6 +20,7 @@ import sys
 import json
 import statistics
 import pandas as pd
+import os
 
 async def main(port: int, addr: str, max_packets: int, log_file: Path = None):
     """
@@ -89,8 +90,9 @@ def cli():
             for line in fh:
                 command, description = line.strip().split(None, 1) 
                 datadict[command] = description.strip() 
-        out_file = open("test1.json", "w") 
+        out_file = open("data.json", "w") 
         json.dump(datadict, out_file, indent = 4, sort_keys = False) 
+<<<<<<< HEAD
         out_file.close()
         
     with open('test1.json') as jsondata:
@@ -99,6 +101,10 @@ def cli():
     df = pd.json_normalize(jdata)
     print(df)
     
+=======
+        out_file.close()     
+        
+>>>>>>> 69f83a8530f8fc0ec6b50775924bc85ccadebea1
         #tempmedianlist = []
         #occupancymedianlist = []
         #with open("data.txt","r") as data:
@@ -113,6 +119,10 @@ def cli():
         #occupancymedian = statistics.median(occupancymedianlist)
         #print(tempmedian)
         #print(occupancymedian)
+<<<<<<< HEAD
+=======
+        os.remove("data.txt")
+>>>>>>> 69f83a8530f8fc0ec6b50775924bc85ccadebea1
 
 if __name__ == "__main__":
     cli()
