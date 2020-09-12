@@ -77,8 +77,8 @@ def cli():
     )
     P = p.parse_args()
 
-	
-	
+    
+    
     try:
         asyncio.run(main(P.port, P.host, P.max_packets, P.log))
     except KeyboardInterrupt:
@@ -91,7 +91,14 @@ def cli():
                 datadict[command] = description.strip() 
         out_file = open("test1.json", "w") 
         json.dump(datadict, out_file, indent = 4, sort_keys = False) 
-        out_file.close()     
+        out_file.close()
+        
+    with open('test1.json') as jsondata:
+        jdata = json.load(jsondata)
+    #df = pd.DataFrame.from_dict(jdata, orient='index')
+    df = pd.json_normalize(jdata)
+    print(df)
+    
         #tempmedianlist = []
         #occupancymedianlist = []
         #with open("data.txt","r") as data:
@@ -106,7 +113,6 @@ def cli():
         #occupancymedian = statistics.median(occupancymedianlist)
         #print(tempmedian)
         #print(occupancymedian)
-
 
 if __name__ == "__main__":
     cli()
