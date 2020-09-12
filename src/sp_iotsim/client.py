@@ -19,6 +19,7 @@ import asyncio
 import sys
 import json
 import statistics
+import pandas as pd
 
 
 async def main(port: int, addr: str, max_packets: int, log_file: Path = None):
