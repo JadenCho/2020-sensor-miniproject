@@ -81,20 +81,29 @@ def cli():
         asyncio.run(main(P.port, P.host, P.max_packets, P.log))
     except KeyboardInterrupt:
         print(P.log)
-        tempmedianlist = []
-        occupancymedianlist = []
-        with open("data.txt","r") as data:
-            for line in data:
-                stuff = data.readline()
-                stuff_dict = json.loads(stuff)
-                temp = stuff_dict['temperature']
-                occupancy = stuff_dict['occupancy']
-                tempmedianlist.append(temp)
-                occupancymedianlist.append(occupancy)
-        tempmedian = statistics.median(tempmedianlist)
-        occupancymedian = statistics.median(occupancymedianlist)
-        print(tempmedian)
-        print(occupancymedian)
+        datajson = 'data.txt'
+        datadict = {}
+        with open(filename) as fh: 
+            for line in fh:
+                command, description = line.strip().split(None, 1) 
+                datadict[command] = description.strip() 
+        out_file = open("test1.json", "w") 
+        json.dump(dict1, out_file, indent = 4, sort_keys = False) 
+        out_file.close()     
+        #tempmedianlist = []
+        #occupancymedianlist = []
+        #with open("data.txt","r") as data:
+        #    for line in data:
+        #        stuff = data.readline()
+        #        stuff_dict = json.loads(stuff)
+        #        temp = stuff_dict['temperature']
+        #        occupancy = stuff_dict['occupancy']
+        #        tempmedianlist.append(temp)
+        #        occupancymedianlist.append(occupancy)
+        #tempmedian = statistics.median(tempmedianlist)
+        #occupancymedian = statistics.median(occupancymedianlist)
+        #print(tempmedian)
+        #print(occupancymedian)
 
 
 if __name__ == "__main__":
