@@ -107,7 +107,7 @@ def cli():
         #occupancymedian = statistics.median(occupancymedianlist)
         #print(tempmedian)
         #print(occupancymedian)
-        os.remove(data.txt)
+        os.remove("data.txt")
 
 if __name__ == "__main__":
     cli()
