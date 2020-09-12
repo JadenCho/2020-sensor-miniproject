@@ -92,19 +92,18 @@ def cli():
                 datadict[command] = description.strip() 
         out_file = open("data.json", "w") 
         json.dump(datadict, out_file, indent = 4, sort_keys = False) 
-<<<<<<< HEAD
+
         out_file.close()
         
-    with open('test1.json') as jsondata:
-        jdata = json.load(jsondata)
-    #df = pd.DataFrame.from_dict(jdata, orient='index')
-    df = pd.json_normalize(jdata)
-    print(df)
-    
-=======
+        with open('data.json') as jsondata:
+            jdata = json.load(jsondata)
+            #df = pd.DataFrame.from_dict(jdata, orient='index')
+            df = pd.json_normalize(jdata).T
+            print(df)
+
         out_file.close()     
         
->>>>>>> 69f83a8530f8fc0ec6b50775924bc85ccadebea1
+
         #tempmedianlist = []
         #occupancymedianlist = []
         #with open("data.txt","r") as data:
@@ -119,10 +118,10 @@ def cli():
         #occupancymedian = statistics.median(occupancymedianlist)
         #print(tempmedian)
         #print(occupancymedian)
-<<<<<<< HEAD
-=======
+
+
         os.remove("data.txt")
->>>>>>> 69f83a8530f8fc0ec6b50775924bc85ccadebea1
+
 
 if __name__ == "__main__":
     cli()
