@@ -92,8 +92,7 @@ def cli():
         json.dump(datadict, out_file, indent = 4, sort_keys = False) 
         out_file.close()     
         
-        with open(out_file, 'r') as G:
-            print(G.read())
+        print(out_file.read())
         #tempmedianlist = []
         #occupancymedianlist = []
         #with open("data.txt","r") as data:
