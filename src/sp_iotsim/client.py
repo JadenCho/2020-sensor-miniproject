@@ -85,7 +85,7 @@ def cli():
         print(P.log)
         datajson = 'data.txt'
         datadict = {}
-        with open(filename) as fh: 
+        with open(datajson) as fh: 
             for line in fh:
                 command, description = line.strip().split(None, 1) 
                 datadict[command] = description.strip() 
