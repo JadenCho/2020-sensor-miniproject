@@ -17,6 +17,8 @@ from pathlib import Path
 import argparse
 import asyncio
 import sys
+import json
+import statistics
 
 
 async def main(port: int, addr: str, max_packets: int, log_file: Path = None):
@@ -54,12 +56,12 @@ async def main(port: int, addr: str, max_packets: int, log_file: Path = None):
                 pass
                 # print(f"{i} total messages received")
             print(data)
-            print_stdout = sys.stdout # Save a reference to the original standard output
+            print_stdout = sys.stdout
 
             with open("data.txt", "a") as f:
-                sys.stdout = f # Change the standard output to the file we created.
+                sys.stdout = f 
                 print(data)
-                sys.stdout = print_stdout # Reset the standard output to its original value
+                sys.stdout = print_stdout 
 
 
 def cli():
@@ -79,6 +81,20 @@ def cli():
         asyncio.run(main(P.port, P.host, P.max_packets, P.log))
     except KeyboardInterrupt:
         print(P.log)
+        tempmedianlist = []
+        occupancymedianlist = []
+        with open("data.txt","r") as data:
+            for line in data:
+                stuff = data.readline()
+                stuff_dict = json.loads(stuff)
+                temp = stuff_dict['temperature']
+                occupancy = stuff_dict['occupancy']
+                tempmedianlist.append(temp)
+                occupancymedianlist.append(occupancy)
+        tempmedian = statistics.median(tempmedianlist)
+        occupancymedian = statistics.median(occupancymedianlist)
+        print(tempmedian)
+        print(occupancymedian)
 
 
 if __name__ == "__main__":
