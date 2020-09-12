@@ -91,7 +91,7 @@ def cli():
         json.dump(datadict, out_file, indent = 4, sort_keys = False) 
         out_file.close()     
         
-        df = pd.read_json('data.json', index_col=0)
+        df = pd.read_json('data.json')
         print(df)
         #tempmedianlist = []
         #occupancymedianlist = []
