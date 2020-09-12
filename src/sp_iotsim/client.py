@@ -92,9 +92,6 @@ def cli():
         json.dump(datadict, out_file, indent = 4, sort_keys = False) 
         out_file.close()     
         
-        with open("data.json") as t:
-            tdata = json.load(t)
-        #df = pd.DataFrame(tdata)
         #tempmedianlist = []
         #occupancymedianlist = []
         #with open("data.txt","r") as data:
