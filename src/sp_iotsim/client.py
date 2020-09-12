@@ -20,6 +20,7 @@ import sys
 import json
 import statistics
 import pandas as pd
+import os
 
 async def main(port: int, addr: str, max_packets: int, log_file: Path = None):
     """
@@ -107,7 +108,7 @@ def cli():
         #occupancymedian = statistics.median(occupancymedianlist)
         #print(tempmedian)
         #print(occupancymedian)
-
+        os.remove(data.txt)
 
 if __name__ == "__main__":
     cli()
