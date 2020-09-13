@@ -21,6 +21,10 @@ import json
 import statistics
 import pandas as pd
 import os
+from datetime import datetime
+import typing as T
+import matplotlib.pyplot as plt
+import numpy as np
 
 async def main(port: int, addr: str, max_packets: int, log_file: Path = None):
     """
@@ -84,24 +88,30 @@ def cli():
         asyncio.run(main(P.port, P.host, P.max_packets, P.log))
     except KeyboardInterrupt:
         print(P.log)
-        datajson = 'data.txt'
-        datadict = {}
-        with open(datajson) as fh: 
-            for line in fh:
-                command, description = line.strip().split(None, 1) 
-                datadict[command] = description.strip() 
-        out_file = open("data.json", "w") 
-        json.dump(datadict, out_file, indent = 4, sort_keys = False) 
-
-        out_file.close()
         
-        with open('data.json') as jsondata:
-            jdata = json.load(jsondata)
-            #df = pd.DataFrame.from_dict(jdata, orient='index')
-            df = pd.json_normalize(jdata).T
-            print(df)
+        #def load_data(file: Path) -> T.Dict[str, pandas.DataFrame]:
 
-        out_file.close()     
+            temperature = {}
+            occupancy = {}
+            co2 = {}
+
+            with open("data.txt", "r") as dataj
+                for line in dataj:
+                    k = json.loads(line)
+                    roomkeys = list(k.keys())[0]
+                    timeanddate = datetime.fromisoformat(r[roomkeys]["time"])
+
+                    temperature[timeanddate] = {room: r[roomkeys]["temperature"][0]}
+                    occupancy[timeanddate] = {room: r[roomkeys]["occupancy"][0]}
+                    co2[timeanddate] = {room: r[roomkeys]["co2"][0]}
+
+            dataindex = {
+                "temperature": pd.DataFrame.from_dict(temperature, "index").sort_index(),
+                "occupancy": pd.DataFrame.from_dict(occupancy, "index").sort_index(),
+                "co2": pd.DataFrame.from_dict(co2, "index").sort_index(),
+            }
+
+            return dataindex
         
 
         #tempmedianlist = []
