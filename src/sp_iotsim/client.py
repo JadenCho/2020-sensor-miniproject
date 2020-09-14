@@ -95,15 +95,15 @@ def cli():
         occupancy = {}
         co2 = {}
 
-        with open("data.txt", "r") as dataj
+        with open("data.txt", "r") as dataj:
             for line in dataj:
                 r = json.loads(line)
                 roomkeys = list(r.keys())[0]
                 timeanddate = datetime.fromisoformat(r[roomkeys]["time"])
 
-                temperature[timeanddate] = {room: r[roomkeys]["temperature"][0]}
-                occupancy[timeanddate] = {room: r[roomkeys]["occupancy"][0]}
-                co2[timeanddate] = {room: r[roomkeys]["co2"][0]}
+                temperature[timeanddate] = {roomkeys: r[roomkeys]["temperature"][0]}
+                occupancy[timeanddate] = {roomkeys: r[roomkeys]["occupancy"][0]}
+                co2[timeanddate] = {roomkeys: r[roomkeys]["co2"][0]}
 
         dataindex = {
             "temperature": pd.DataFrame.from_dict(temperature, "index").sort_index(),
