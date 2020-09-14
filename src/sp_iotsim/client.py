@@ -81,56 +81,59 @@ def cli():
     )
     P = p.parse_args()
 
-    
+def load_data(file: Path) -> T.Dict[str, pandas.DataFrame]:
+
+    temperature = {}
+    occupancy = {}
+    co2 = {}
+
+    with open(file, "r") as f:
+        for line in f:
+            r = json.loads(line)
+            room = list(r.keys())[0]
+            time = datetime.fromisoformat(r[room]["time"])
+
+            temperature[time] = {room: r[room]["temperature"][0]}
+            occupancy[time] = {room: r[room]["occupancy"][0]}
+            co2[time] = {room: r[room]["co2"][0]}
+
+    data = {
+        "temperature": pandas.DataFrame.from_dict(temperature, "index").sort_index(),
+        "occupancy": pandas.DataFrame.from_dict(occupancy, "index").sort_index(),
+        "co2": pandas.DataFrame.from_dict(co2, "index").sort_index(),
+    }
+
+    return data
     
     try:
         asyncio.run(main(P.port, P.host, P.max_packets, P.log))
     except KeyboardInterrupt:
         print(P.log)
         
-        #def load_data(file: Path) -> T.Dict[str, pandas.DataFrame]:
+        data = load_file("data.txt")
         
-        temperature = {}
-        occupancy = {}
-        co2 = {}
-
-        with open("data.txt", "r") as dataj:
-            for line in dataj:
-                r = json.loads(line)
-                roomkeys = list(r.keys())[0]
-                timeanddate = datetime.fromisoformat(r[roomkeys]["time"])
-
-                temperature[timeanddate] = {roomkeys: r[roomkeys]["temperature"][0]}
-                occupancy[timeanddate] = {roomkeys: r[roomkeys]["occupancy"][0]}
-                co2[timeanddate] = {roomkeys: r[roomkeys]["co2"][0]}
-
-        dataindex = {
-            "temperature": pd.DataFrame.from_dict(temperature, "index").sort_index(),
-            "occupancy": pd.DataFrame.from_dict(occupancy, "index").sort_index(),
-            "co2": pd.DataFrame.from_dict(co2, "index").sort_index(),
-        }
-
-        return dataindex
-        print(temperature)
+        print(data)
         
+        
+        #temperature = {}
+        #occupancy = {}
+        #co2 = {}
 
-        #tempmedianlist = []
-        #occupancymedianlist = []
-        #with open("data.txt","r") as data:
-        #    for line in data:
-        #        stuff = data.readline()
-        #        stuff_dict = json.loads(stuff)
-        #        temp = stuff_dict['temperature']
-        #        occupancy = stuff_dict['occupancy']
-        #        tempmedianlist.append(temp)
-        #        occupancymedianlist.append(occupancy)
-        #tempmedian = statistics.median(tempmedianlist)
-        #occupancymedian = statistics.median(occupancymedianlist)
-        #print(tempmedian)
-        #print(occupancymedian)
+        #with open("data.txt", "r") as dataj:
+        #    for line in dataj:
+        #        r = json.loads(line)
+        #        roomkeys = list(r.keys())[0]
+        #        timeanddate = datetime.fromisoformat(r[roomkeys]["time"])
 
-
-        os.remove("data.txt")
+        #        temperature[timeanddate] = {roomkeys: r[roomkeys]["temperature"][0]}
+        #        occupancy[timeanddate] = {roomkeys: r[roomkeys]["occupancy"][0]}
+        #        co2[timeanddate] = {roomkeys: r[roomkeys]["co2"][0]}
+                
+                
+        #data = {
+        #"temperature": pandas.DataFrame.from_dict(temperature, "index").sort_index()
+        #}
+        #print(data)
 
 
 if __name__ == "__main__":
