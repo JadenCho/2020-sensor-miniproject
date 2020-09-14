@@ -97,8 +97,8 @@ def cli():
 
             with open("data.txt", "r") as dataj
                 for line in dataj:
-                    k = json.loads(line)
-                    roomkeys = list(k.keys())[0]
+                    r = json.loads(line)
+                    roomkeys = list(r.keys())[0]
                     timeanddate = datetime.fromisoformat(r[roomkeys]["time"])
 
                     temperature[timeanddate] = {room: r[roomkeys]["temperature"][0]}
