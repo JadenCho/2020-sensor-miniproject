@@ -66,28 +66,7 @@ async def main(port: int, addr: str, max_packets: int, log_file: Path = None):
                 sys.stdout = f 
                 print(data)
                 sys.stdout = print_stdout 
-                
-def load_data(file: Path) -> T.Dict[str, pd.DataFrame]:
-
-    temperature = {}
-    occupancy = {}
-    co2 = {}
-
-    with open(file, "r") as f:
-        for line in f:
-            r = json.loads(line)
-            room = list(r.keys())[0]
-            time = datetime.fromisoformat(r[room]["time"])
-
-            temperature[time] = {room: r[room]["temperature"][0]}
-            occupancy[time] = {room: r[room]["occupancy"][0]}
-            co2[time] = {room: r[room]["co2"][0]}
-
-    datafinal = {
-        "temperature": pd.DataFrame.from_dict(temperature, "index").sort_index(),
-        "occupancy": pd.DataFrame.from_dict(occupancy, "index").sort_index(),
-        "co2": pd.DataFrame.from_dict(co2, "index").sort_index(),
-    }
+           
 
 def cli():
     p = argparse.ArgumentParser(description="WebSocket client")
@@ -107,31 +86,13 @@ def cli():
         asyncio.run(main(P.port, P.host, P.max_packets, P.log))
     except KeyboardInterrupt:
         print(P.log)
-       
-        datafinal = load_data("data.txt")
         
-        print(datafinal)
-        
-        
-        #temperature = {}
-        #occupancy = {}
-        #co2 = {}
-
-        #with open("data.txt", "r") as dataj:
-        #    for line in dataj:
-        #        r = json.loads(line)
-        #        roomkeys = list(r.keys())[0]
-        #        timeanddate = datetime.fromisoformat(r[roomkeys]["time"])
-
-        #        temperature[timeanddate] = {roomkeys: r[roomkeys]["temperature"][0]}
-        #        occupancy[timeanddate] = {roomkeys: r[roomkeys]["occupancy"][0]}
-        #        co2[timeanddate] = {roomkeys: r[roomkeys]["co2"][0]}
-                
-                
-        #data = {
-        #"temperature": pandas.DataFrame.from_dict(temperature, "index").sort_index()
-        #}
-        #print(data)
+        with open("data.txt", "r") as stuff:
+        for line in stuff:
+            r = json.loads(line)
+            room = list(r.keys())[0]
+            time = datetime.fromisoformat(r[room]["time"])
+            print(time)
 
 
 if __name__ == "__main__":
