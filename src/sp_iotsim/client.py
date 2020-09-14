@@ -102,8 +102,6 @@ def load_data(file: Path) -> T.Dict[str, pd.DataFrame]:
         "occupancy": pd.DataFrame.from_dict(occupancy, "index").sort_index(),
         "co2": pd.DataFrame.from_dict(co2, "index").sort_index(),
     }
-
-    return data
     
     try:
         asyncio.run(main(P.port, P.host, P.max_packets, P.log))
