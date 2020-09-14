@@ -83,7 +83,7 @@ def load_data(file: Path) -> T.Dict[str, pd.DataFrame]:
             occupancy[time] = {room: r[room]["occupancy"][0]}
             co2[time] = {room: r[room]["co2"][0]}
 
-    data = {
+    datafinal = {
         "temperature": pd.DataFrame.from_dict(temperature, "index").sort_index(),
         "occupancy": pd.DataFrame.from_dict(occupancy, "index").sort_index(),
         "co2": pd.DataFrame.from_dict(co2, "index").sort_index(),
@@ -108,9 +108,9 @@ def cli():
     except KeyboardInterrupt:
         print(P.log)
        
-        data = load_data("data.txt")
+        datafinal = load_data("data.txt")
         
-        print(data)
+        print(datafinal)
         
         
         #temperature = {}
