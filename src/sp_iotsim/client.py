@@ -111,6 +111,7 @@ def cli():
         }
 
         return dataindex
+        print(dataindx)
         
 
         #tempmedianlist = []
