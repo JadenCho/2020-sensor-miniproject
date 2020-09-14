@@ -18,13 +18,13 @@ import matplotlib.pyplot as plt
 import numpy as np
 
 
-def load_data(file: Path) -> T.Dict[str, pandas.DataFrame]:
+def load_data("data.txt": Path) -> T.Dict[str, pandas.DataFrame]:
 
     temperature = {}
     occupancy = {}
     co2 = {}
 
-    with open(file, "r") as f:
+    with open("data.txt", "r") as f:
         for line in f:
             r = json.loads(line)
             room = list(r.keys())[0]
