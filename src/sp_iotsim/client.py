@@ -81,7 +81,7 @@ def cli():
     )
     P = p.parse_args()
 
-def load_data(file: Path) -> T.Dict[str, pandas.DataFrame]:
+def load_data(file: Path) -> T.Dict[str, pd.DataFrame]:
 
     temperature = {}
     occupancy = {}
@@ -98,9 +98,9 @@ def load_data(file: Path) -> T.Dict[str, pandas.DataFrame]:
             co2[time] = {room: r[room]["co2"][0]}
 
     data = {
-        "temperature": pandas.DataFrame.from_dict(temperature, "index").sort_index(),
-        "occupancy": pandas.DataFrame.from_dict(occupancy, "index").sort_index(),
-        "co2": pandas.DataFrame.from_dict(co2, "index").sort_index(),
+        "temperature": pd.DataFrame.from_dict(temperature, "index").sort_index(),
+        "occupancy": pd.DataFrame.from_dict(occupancy, "index").sort_index(),
+        "co2": pd.DataFrame.from_dict(co2, "index").sort_index(),
     }
 
     return data
