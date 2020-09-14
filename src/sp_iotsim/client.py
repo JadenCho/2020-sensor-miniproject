@@ -81,28 +81,7 @@ def cli():
     )
     P = p.parse_args()
 
-def load_data(file: Path) -> T.Dict[str, pd.DataFrame]:
 
-    temperature = {}
-    occupancy = {}
-    co2 = {}
-
-    with open(file, "r") as f:
-        for line in f:
-            r = json.loads(line)
-            room = list(r.keys())[0]
-            time = datetime.fromisoformat(r[room]["time"])
-
-            temperature[time] = {room: r[room]["temperature"][0]}
-            occupancy[time] = {room: r[room]["occupancy"][0]}
-            co2[time] = {room: r[room]["co2"][0]}
-
-    data = {
-        "temperature": pd.DataFrame.from_dict(temperature, "index").sort_index(),
-        "occupancy": pd.DataFrame.from_dict(occupancy, "index").sort_index(),
-        "co2": pd.DataFrame.from_dict(co2, "index").sort_index(),
-    }
-    
     try:
         asyncio.run(main(P.port, P.host, P.max_packets, P.log))
     except KeyboardInterrupt:
