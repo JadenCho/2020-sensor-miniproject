@@ -66,6 +66,7 @@ async def main(port: int, addr: str, max_packets: int, log_file: Path = None):
                 sys.stdout = f 
                 print(data)
                 sys.stdout = print_stdout 
+                
 def load_data(file: Path) -> T.Dict[str, pd.DataFrame]:
 
     temperature = {}
@@ -107,7 +108,7 @@ def cli():
     except KeyboardInterrupt:
         print(P.log)
        
-        data = load_file("data.txt")
+        data = load_data("data.txt")
         
         print(data)
         
