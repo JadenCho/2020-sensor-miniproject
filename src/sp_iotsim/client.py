@@ -111,7 +111,7 @@ def cli():
         }
 
         return dataindex
-        print(dataindex)
+        print(temperature)
         
 
         #tempmedianlist = []
