@@ -91,27 +91,27 @@ def cli():
         
         #def load_data(file: Path) -> T.Dict[str, pandas.DataFrame]:
         
-            temperature = {}
-            occupancy = {}
-            co2 = {}
+        temperature = {}
+        occupancy = {}
+        co2 = {}
 
-            with open("data.txt", "r") as dataj
-                for line in dataj:
-                    r = json.loads(line)
-                    roomkeys = list(r.keys())[0]
-                    timeanddate = datetime.fromisoformat(r[roomkeys]["time"])
+        with open("data.txt", "r") as dataj
+            for line in dataj:
+                r = json.loads(line)
+                roomkeys = list(r.keys())[0]
+                timeanddate = datetime.fromisoformat(r[roomkeys]["time"])
 
-                    temperature[timeanddate] = {room: r[roomkeys]["temperature"][0]}
-                    occupancy[timeanddate] = {room: r[roomkeys]["occupancy"][0]}
-                    co2[timeanddate] = {room: r[roomkeys]["co2"][0]}
+                temperature[timeanddate] = {room: r[roomkeys]["temperature"][0]}
+                occupancy[timeanddate] = {room: r[roomkeys]["occupancy"][0]}
+                co2[timeanddate] = {room: r[roomkeys]["co2"][0]}
 
-            dataindex = {
-                "temperature": pd.DataFrame.from_dict(temperature, "index").sort_index(),
-                "occupancy": pd.DataFrame.from_dict(occupancy, "index").sort_index(),
-                "co2": pd.DataFrame.from_dict(co2, "index").sort_index(),
-            }
+        dataindex = {
+            "temperature": pd.DataFrame.from_dict(temperature, "index").sort_index(),
+            "occupancy": pd.DataFrame.from_dict(occupancy, "index").sort_index(),
+            "co2": pd.DataFrame.from_dict(co2, "index").sort_index(),
+        }
 
-            return dataindex
+        return dataindex
         
 
         #tempmedianlist = []
