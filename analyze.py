@@ -24,7 +24,7 @@ def load_data(file: Path) -> T.Dict[str, pandas.DataFrame]:
     occupancy = {}
     co2 = {}
 
-    with open("data.txt", "r") as f:
+    with open(file, "r") as f:
         for line in f:
             r = json.loads(line)
             room = list(r.keys())[0]
