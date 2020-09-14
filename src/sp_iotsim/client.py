@@ -23,7 +23,6 @@ import pandas as pd
 import os
 from datetime import datetime
 import typing as T
-import matplotlib.pyplot as plt
 import numpy as np
 
 async def main(port: int, addr: str, max_packets: int, log_file: Path = None):
