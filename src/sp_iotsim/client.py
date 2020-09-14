@@ -88,11 +88,11 @@ def cli():
         print(P.log)
         
         with open("data.txt", "r") as stuff:
-        for line in stuff:
-            r = json.loads(line)
-            room = list(r.keys())[0]
-            time = datetime.fromisoformat(r[room]["time"])
-            print(time)
+            for line in stuff:
+                r = json.loads(line)
+                room = list(r.keys())[0]
+                time = datetime.fromisoformat(r[room]["time"])
+                print(time)
 
 
 if __name__ == "__main__":
