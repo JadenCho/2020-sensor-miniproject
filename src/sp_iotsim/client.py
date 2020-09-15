@@ -150,15 +150,16 @@ def cli():
         
         
         plt.figure(1)
-        plt.subplot(311)
         plt.hist(x1, bins = 1)
         plt.ylabel("Temperature")
         plt.title("Temperature Histogram")
-        plt.subplot(312)
+        
+        plt.figure(2)
         plt.hist(x2, bins = 1)
         plt.ylabel("Occupancy")
         plt.title("Occupancy Histogram")
-        plt.subplot(313)
+        
+        plt.figure(3)
         plt.hist(x3, bins = 1)
         plt.ylabel("CO2")
         plt.title("CO2 Histogram")
