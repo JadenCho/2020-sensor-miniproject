@@ -157,13 +157,13 @@ def cli():
         plt.title("Frequency of Temperatures")
         
         plt.figure(2)
-        occu.hist()
+        x2.hist()
         plt.xlabel("People")
         plt.ylabel("Occurance")
         plt.title("Frequency of the Number of People")
         
         plt.figure(3)
-        carb.hist()
+        x3.hist()
         plt.xlabel("CO2 Levels")
         plt.ylabel("Occurance")
         plt.title("Frequency of CO2 Levels")
