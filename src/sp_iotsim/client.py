@@ -150,7 +150,7 @@ def cli():
         
         
         
-        timekey = pd.DataFrame(times, columns = ["Date","time"])
+        timekey = pd.DataFrame(times, columns = ["Time"])
         print(timekey)
 
         
