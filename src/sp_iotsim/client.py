@@ -24,6 +24,8 @@ import os
 from datetime import datetime
 import typing as T
 import numpy as np
+import matplotlib.pyplot as plt
+import scipy.stats as ss
 
 async def main(port: int, addr: str, max_packets: int, log_file: Path = None):
     """
@@ -64,7 +66,7 @@ async def main(port: int, addr: str, max_packets: int, log_file: Path = None):
 
             with open("data.txt", "a") as f:
                 sys.stdout = f 
-                print(data)
+                #print(data)
                 sys.stdout = print_stdout 
            
 
@@ -94,12 +96,12 @@ def cli():
         with open("data.txt", "r") as stuff:
             for line in stuff:
                 r = json.loads(line)
-                room = list(r.keys())[0]
-                time = datetime.fromisoformat(r[room]["time"])
+                roomkeys = list(r.keys())[0]
+                time = datetime.fromisoformat(r[roomkeys]["time"])
                 
-                temperature[time] = {room: r[room]["temperature"][0]}
-                occupancy[time] = {room: r[room]["occupancy"][0]}
-                co2[time] = {room: r[room]["co2"][0]}
+                temperature[time] = {roomkeys: r[roomkeys]["temperature"][0]}
+                occupancy[time] = {roomkeys: r[roomkeys]["occupancy"][0]}
+                co2[time] = {roomkeys: r[roomkeys]["co2"][0]}
 
       
         
@@ -109,18 +111,35 @@ def cli():
         temp = pd.DataFrame.from_dict(temperature, "index").sort_index()
         print(temp[chooseroom].dropna())
         print("\n")
+        
         print("Temperature Variance is...")
         print(temp[chooseroom].dropna().var())
         print("\n")
+        
+        print("Temperature Median is...")
+        print(temp[chooseroom].dropna().median())
+        print("\n")
+        tempmean = temp[chooseroom].dropna().mean()
+        tempstd = temp[chooseroom].dropna().std()
+        print(tempmean)
+        print(tempstd)
+        
+        
         
         print("Now Displaying Occupancy...")
         occu = pd.DataFrame.from_dict(occupancy, "index").sort_index()
         print(occu[chooseroom].dropna())
         print("\n")
-        print("Occupancy Variance is...")
-        print(temp[chooseroom].dropna().var())
         
+        print("Occupancy Variance is...")
+        print(occu[chooseroom].dropna().var())
         print("\n")
+        
+        print("Occupancy Median is...")
+        print(occu[chooseroom].dropna().median())
+        print("\n")
+        
+        
         
         print("Now Displaying CO2...")
         carb = pd.DataFrame.from_dict(co2, "index").sort_index()
