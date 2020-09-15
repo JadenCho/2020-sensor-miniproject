@@ -101,7 +101,7 @@ def cli():
             occupancy[time] = {room: r[room]["occupancy"][0]}
             co2[time] = {room: r[room]["co2"][0]}
 
-                print(temperature)
+        print(temperature)
 
 
 if __name__ == "__main__":
