@@ -105,28 +105,28 @@ def cli():
         
         chooseroom = input("Please choose a room: office, lab1, class1\n")
         
-        print("Now Printing Temperature...")
+        print("Now Displaying Temperature...")
         temp = pd.DataFrame.from_dict(temperature, "index").sort_index()
-        #print(temp)
+        print(temp[chooseroom].dropna())
+        print("\n")
+        print("Temperature Variance is...")
         print(temp[chooseroom].dropna().var())
         print("\n")
-        #tempval = temperature.values()
-        #temp = list(tempval)
-        #print(temp)
         
-        print("Now Printing Occupancy...")
+        print("Now Displaying Occupancy...")
         occu = pd.DataFrame.from_dict(occupancy, "index").sort_index()
-        #print(occu)
         print(occu[chooseroom].dropna())
         print("\n")
-        #print(occupancy)
+        print("Occupancy Variance is...")
+        print(temp[chooseroom].dropna().var())
         
-        print("Now Printing CO2...")
-        carb = pd.DataFrame.from_dict(co2, "index").sort_index()
-        #print(carb)
-        print(carb[chooseroom].dropna())
         print("\n")
-        #print(co2)
+        
+        print("Now Displaying CO2...")
+        carb = pd.DataFrame.from_dict(co2, "index").sort_index()
+        print(carb[chooseroom].dropna())
+        
+        
         
         os.remove("data.txt")
 
