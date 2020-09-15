@@ -121,11 +121,12 @@ def cli():
         print(temp[chooseroom].dropna().median())
         print("\n")
         
-        tempmean = temp[chooseroom].dropna().mean()
-        tempstd = temp[chooseroom].dropna().std()
+        plt.hist(x1)
+        #tempmean = temp[chooseroom].dropna().mean()
+        #tempstd = temp[chooseroom].dropna().std()
 
-        temp_pdf = ss.norm.pdf(x1, tempmean, tempstd)
-        plt.plot(x1, temp_pdf, label="Temperature PDF")
+        #temp_pdf = ss.norm.pdf(x1, tempmean, tempstd)
+        #plt.plot(x1, temp_pdf, label="Temperature PDF")
         
         
         
@@ -143,11 +144,12 @@ def cli():
         print(occu[chooseroom].dropna().median())
         print("\n")
         
-        occumean = occu[chooseroom].dropna().mean()
-        occustd = occu[chooseroom].dropna().std()
+        plt.hist(x2)
+        #occumean = occu[chooseroom].dropna().mean()
+        #occustd = occu[chooseroom].dropna().std()
         
-        occu_pdf = ss.norm.pdf(x2, occumean, occustd)
-        plt.plot(x2, occu_pdf, label="Occupancy PDF")
+        #occu_pdf = ss.norm.pdf(x2, occumean, occustd)
+        #plt.plot(x2, occu_pdf, label="Occupancy PDF")
         
         
         
@@ -156,14 +158,15 @@ def cli():
         x3 = carb[chooseroom].dropna()
         print(carb[chooseroom].dropna())
         
-        carbmean = carb[chooseroom].dropna().mean()
-        carbstd = carb[chooseroom].dropna().std()
+        plt.hist(x3)
+        #carbmean = carb[chooseroom].dropna().mean()
+        #carbstd = carb[chooseroom].dropna().std()
         
-        carb_pdf = ss.norm.pdf(x3, carbmean, carbstd)
-        plt.plot(x3, carb_pdf, label="CO2 PDF")
+        #carb_pdf = ss.norm.pdf(x3, carbmean, carbstd)
+        #plt.plot(x3, carb_pdf, label="CO2 PDF")
         
         plt.show()
-        plt.legend();
+        #plt.legend();
         os.remove("data.txt")
 
 
