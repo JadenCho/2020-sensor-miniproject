@@ -171,7 +171,7 @@ def cli():
         #for k in temp:
         #
         time = temp.index
-        temp.hist()
+        #temp.hist()
         plt.figure()
         plt.hist(np.diff(time.values).astype(np.int64) // 1000000000)
         plt.xlabel("Time (seconds)")
