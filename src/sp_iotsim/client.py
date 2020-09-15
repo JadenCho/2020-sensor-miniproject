@@ -172,14 +172,14 @@ def cli():
         plt.ylabel("Occurance")
         plt.title("Frequency of CO2 Levels")
         
-        for k in temp:
-            time = temp[k].index
-            temp[k].hist()
-            plt.figure()
-            plt.hist(np.diff(time.values).astype(np.int64) // 1000000000)
-            plt.xlabel("Time (seconds)")
-            plt.ylabel("Occurrences")
-            plt.title("Time Intervals between Sensor Readings")
+        #for k in temp:
+        times = temp.index
+        #temp.hist()
+        plt.figure(4)
+        plt.hist(np.diff(times.values).astype(np.int64) // 1000000000)
+        plt.xlabel("Time (seconds)")
+        plt.ylabel("Occurrences")
+        plt.title("Time Intervals between Sensor Readings")
         
        
         plt.show()
