@@ -103,8 +103,9 @@ def cli():
 
         print("Now Printing Temperature...")
         print(temperature)
-        tempkeys = list(temperature)
-        print(tempkeys)
+        tempval = temperature.values()
+        temp = list(tempval)
+        print(temp)
         
         print("Now Printing Occupancy...")
         print(occupancy)
