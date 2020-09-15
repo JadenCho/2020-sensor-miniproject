@@ -167,7 +167,7 @@ def cli():
         #plt.ylabel("CO2 Levels")
         #plt.title("Frequency of CO2")
         
-        #time = temp.index
+        time = temp.index
         plt.figure(4)
         plt.hist(np.diff(time.values).astype(np.int64) // 1000000000)
         plt.xlabel("Time (seconds)")
