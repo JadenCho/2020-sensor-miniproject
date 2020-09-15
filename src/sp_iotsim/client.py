@@ -102,10 +102,11 @@ def cli():
                 co2[time] = {room: r[room]["co2"][0]}
 
         print("Now Printing Temperature...")
-        print(temperature)
-        tempval = temperature.values()
-        temp = list(tempval)
+        temp = pd.DataFrame.from_dict(temperature)
         print(temp)
+        #tempval = temperature.values()
+        #temp = list(tempval)
+        #print(temp)
         
         print("Now Printing Occupancy...")
         print(occupancy)
