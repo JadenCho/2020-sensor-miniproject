@@ -168,11 +168,26 @@ def cli():
         #plt.title("CO2 Histogram")
         #plt.show()
         
-        #for k in temp:
-        #
+        plt.figure(1)
+        temp.hist()
+        plt.xlabel("Occurance")
+        plt.ylabel("Temperature")
+        plt.title("Frequency of Temperatures")
+        
+        plt.figure(2)
+        occu.hist()
+        plt.xlabel("Occurance")
+        plt.ylabel("People")
+        plt.title("Frequency of People")
+        
+        plt.figure(3)
+        carb.hist()
+        plt.xlabel("Occurance")
+        plt.ylabel("CO2 Levels")
+        plt.title("Frequency of CO2")
+        
         time = temp.index
-        #temp.hist()
-        plt.figure()
+        plt.figure(4)
         plt.hist(np.diff(time.values).astype(np.int64) // 1000000000)
         plt.xlabel("Time (seconds)")
         plt.ylabel("Occurrences")
