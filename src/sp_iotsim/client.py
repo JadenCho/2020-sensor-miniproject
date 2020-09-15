@@ -26,7 +26,7 @@ import typing as T
 import numpy as np
 import matplotlib.pyplot as plt
 import scipy.stats as ss
-import analyze.py as analyze
+
 
 async def main(port: int, addr: str, max_packets: int, log_file: Path = None):
     """
@@ -172,13 +172,7 @@ def cli():
         plt.ylabel("Occurance")
         plt.title("Frequency of CO2 Levels")
         
-        #ax = plt.figure(4).gca()
-        #ax.hist(temp["temperature"].index.to_series().diff().dt.total_seconds(), bins=100)
-        #ax.set_xlabel("Time (seconds)")
-        #ax.set_title("Time interval")
-        #ax.set_ylabel("# of occurences")
-        
-        analyze("data.txt")
+       
         plt.show()
         
         os.remove("data.txt")
