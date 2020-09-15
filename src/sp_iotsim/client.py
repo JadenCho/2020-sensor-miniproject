@@ -149,28 +149,28 @@ def cli():
         
         
         
-        plt.figure(1)
-        plt.hist(x1)
-        plt.ylabel("Occurrences")
-        plt.xlabel("Temperature")
-        plt.title("Temperature Histogram")
+        #plt.figure(1)
+        #plt.hist(x1)
+        #plt.ylabel("Occurrences")
+        #plt.xlabel("Temperature")
+        #plt.title("Temperature Histogram")
         
-        plt.figure(2)
-        plt.hist(x2)
-        plt.ylabel("Occurrences")
-        plt.xlabel("Occupancy")
-        plt.title("Occupancy Histogram")
+        #plt.figure(2)
+        #plt.hist(x2)
+        #plt.ylabel("Occurrences")
+        #plt.xlabel("Occupancy")
+        #plt.title("Occupancy Histogram")
         
-        plt.figure(3)
-        plt.hist(x3)
-        plt.ylabel("Occurrences")
-        plt.xlabel("CO2")
-        plt.title("CO2 Histogram")
-        plt.show()
+        #plt.figure(3)
+        #plt.hist(x3)
+        #plt.ylabel("Occurrences")
+        #plt.xlabel("CO2")
+        #plt.title("CO2 Histogram")
+        #plt.show()
         
         for k in temp:
         #
-            time = temp[k].index
+            time1 = temp[k].index
             temp[k].hist()
             plt.figure()
             plt.hist(np.diff(time.values).astype(np.int64) // 1000000000)
