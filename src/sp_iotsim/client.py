@@ -102,9 +102,9 @@ def cli():
                 co2[time] = {room: r[room]["co2"][0]}
 
         datastuff = {
-        "temperature": pandas.DataFrame.from_dict(temperature, "index").sort_index(),
-        "occupancy": pandas.DataFrame.from_dict(occupancy, "index").sort_index(),
-        "co2": pandas.DataFrame.from_dict(co2, "index").sort_index(),
+        "temperature": pd.DataFrame.from_dict(temperature, "index").sort_index(),
+        "occupancy": pd.DataFrame.from_dict(occupancy, "index").sort_index(),
+        "co2": pd.DataFrame.from_dict(co2, "index").sort_index(),
         }
         
         print(datastuff)
