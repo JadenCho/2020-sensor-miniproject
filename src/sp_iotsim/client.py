@@ -87,6 +87,10 @@ def cli():
     except KeyboardInterrupt:
         print(P.log)
         
+        temperature = {}
+        occupancy = {}
+        co2 = {}
+        
         with open("data.txt", "r") as stuff:
             for line in stuff:
                 r = json.loads(line)
