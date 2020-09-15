@@ -61,7 +61,7 @@ async def main(port: int, addr: str, max_packets: int, log_file: Path = None):
             if i % 5 == 0:
                 pass
                 # print(f"{i} total messages received")
-            #print(data)
+            print(data)
             print_stdout = sys.stdout
 
             with open("data.txt", "a") as f:
