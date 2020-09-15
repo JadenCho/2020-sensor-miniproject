@@ -92,6 +92,7 @@ def cli():
         temperature = {}
         occupancy = {}
         co2 = {}
+        times = []
         
         with open("data.txt", "r") as stuff:
             for line in stuff:
@@ -102,6 +103,7 @@ def cli():
                 temperature[time] = {roomkeys: r[roomkeys]["temperature"][0]}
                 occupancy[time] = {roomkeys: r[roomkeys]["occupancy"][0]}
                 co2[time] = {roomkeys: r[roomkeys]["co2"][0]}
+                times.append(time)
 
       
         
@@ -146,7 +148,10 @@ def cli():
         x3 = carb[chooseroom].dropna()
         print(carb[chooseroom].dropna())
         
-        print(time)
+        
+        
+        timekey = pd.DataFrame(times)
+        print(timekey)
         #print(time.median())
         
         
