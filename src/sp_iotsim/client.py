@@ -112,6 +112,7 @@ def cli():
         print("Now Printing Temperature...")
         temp = pd.DataFrame.from_dict(temperature, "index").sort_index()
         print(temp)
+        print(temp["office"])
         #tempval = temperature.values()
         #temp = list(tempval)
         #print(temp)
