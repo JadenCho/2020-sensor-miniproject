@@ -170,7 +170,7 @@ def cli():
         
         for k in temp:
         #
-            time1 = temp[k].index
+            time = temp[k].index
             temp[k].hist()
             plt.figure()
             plt.hist(np.diff(time.values).astype(np.int64) // 1000000000)
