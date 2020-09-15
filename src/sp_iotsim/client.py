@@ -92,7 +92,11 @@ def cli():
                 r = json.loads(line)
                 room = list(r.keys())[0]
                 time = datetime.fromisoformat(r[room]["time"])
-                print(time)
+                temperature[time] = {room: r[room]["temperature"][0]}
+                occupancy[time] = {room: r[room]["occupancy"][0]}
+                co2[time] = {room: r[room]["co2"][0]}
+
+                print(temperature)
 
 
 if __name__ == "__main__":
