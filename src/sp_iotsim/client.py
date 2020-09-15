@@ -109,6 +109,7 @@ def cli():
         
         print("Now Displaying Temperature...")
         temp = pd.DataFrame.from_dict(temperature, "index").sort_index()
+        x1 = temp[chooseroom].dropna()
         print(temp[chooseroom].dropna())
         print("\n")
         
@@ -119,15 +120,18 @@ def cli():
         print("Temperature Median is...")
         print(temp[chooseroom].dropna().median())
         print("\n")
+        
         tempmean = temp[chooseroom].dropna().mean()
         tempstd = temp[chooseroom].dropna().std()
-        print(tempmean)
-        print(tempstd)
+
+        temp_pdf = ss.norm.pdf(x1, tempmean, tempstd)
+        plt.plot(x1, temp_pdf, label=' Temperature PDF')
         
         
         
         print("Now Displaying Occupancy...")
         occu = pd.DataFrame.from_dict(occupancy, "index").sort_index()
+        x2 = occu[chooseroom].dropna()
         print(occu[chooseroom].dropna())
         print("\n")
         
@@ -139,14 +143,27 @@ def cli():
         print(occu[chooseroom].dropna().median())
         print("\n")
         
+        occumean = occu[chooseroom].dropna().mean()
+        occustd = occu[chooseroom].dropna().std()
+        
+        occu_pdf = ss.norm.pdf(x2, occumean, occustd)
+        plt.plot(x2, occu_pdf, label=' Occupancy PDF')
+        
         
         
         print("Now Displaying CO2...")
         carb = pd.DataFrame.from_dict(co2, "index").sort_index()
+        x3 = carb[chooseroom].dropna()
         print(carb[chooseroom].dropna())
         
+        carbmean = carb[chooseroom].dropna().mean()
+        carbstd = carb[chooseroom].dropna().std()
+        
+        carb_pdf = ss.norm.pdf(carb[chooseroom].dropna(), carbmean, carbstd)
+        plt.plot(x3 carb_pdf, label=' CO2 PDF')
         
         
+        plt.legend();
         os.remove("data.txt")
 
 
