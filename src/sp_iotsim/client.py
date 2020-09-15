@@ -101,25 +101,29 @@ def cli():
                 occupancy[time] = {room: r[room]["occupancy"][0]}
                 co2[time] = {room: r[room]["co2"][0]}
 
-        datastuff = {
-        "temperature": pd.DataFrame.from_dict(temperature, "index").sort_index(),
-        "occupancy": pd.DataFrame.from_dict(occupancy, "index").sort_index(),
-        "co2": pd.DataFrame.from_dict(co2, "index").sort_index(),
-        }
+        #datastuff = {
+        #"temperature": pd.DataFrame.from_dict(temperature, "index").sort_index(),
+        #"occupancy": pd.DataFrame.from_dict(occupancy, "index").sort_index(),
+        #"co2": pd.DataFrame.from_dict(co2, "index").sort_index(),
+        #}
         
-        print(datastuff)
+        #print(datastuff)
         
-        #print("Now Printing Temperature...")
-        #temp = pd.DataFrame.from_dict(temperature, "index").sort_index()
-        #print(temp)
+        print("Now Printing Temperature...")
+        temp = pd.DataFrame.from_dict(temperature, "index").sort_index()
+        print(temp)
         #tempval = temperature.values()
         #temp = list(tempval)
         #print(temp)
         
-        #print("Now Printing Occupancy...")
+        print("Now Printing Occupancy...")
+        occu = pd.DataFrame.from_dict(occupancy, "index").sort_index()
+        print(occu)
         #print(occupancy)
         
-        #print("Now Printing CO2...")
+        print("Now Printing CO2...")
+        carb = pd.DataFrame.from_dict(co2, "index").sort_index()
+        print(carb)
         #print(co2)
         
         os.remove("data.txt")
