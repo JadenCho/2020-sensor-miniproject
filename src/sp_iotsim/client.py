@@ -101,7 +101,15 @@ def cli():
                 occupancy[time] = {room: r[room]["occupancy"][0]}
                 co2[time] = {room: r[room]["co2"][0]}
 
+        print("Now Printing Temperature...")
         print(temperature)
+        
+        print("Now Printing Occupancy...")
+        print(occupancy)
+        
+        print("Now Printing CO2...")
+        print(co2)
+        
         os.remove("data.txt")
 
 
