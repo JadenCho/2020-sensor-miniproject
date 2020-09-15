@@ -150,9 +150,10 @@ def cli():
         
         
         
-        timekey = pd.DataFrame(times)
+        timekey = pd.DataFrame(times, columns = ["Date and Time"])
         print(timekey)
-        #print(time.median())
+        print(timekey.var())
+        print(timekey.median())
         
         
         plt.figure(1)
