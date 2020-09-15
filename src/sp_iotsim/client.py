@@ -150,18 +150,21 @@ def cli():
         
         
         plt.figure(1)
-        plt.hist(x1, bins = 1, orientation="horizontal")
-        plt.ylabel("Temperature")
+        plt.hist(x1)
+        plt.ylabel("Occurrences")
+        plt.xlabel("Temperature")
         plt.title("Temperature Histogram")
         
         plt.figure(2)
-        plt.hist(x2, bins = 1, orientation="horizontal")
-        plt.ylabel("Occupancy")
+        plt.hist(x2)
+        plt.ylabel("Occurrences")
+        plt.xlabel("Occupancy")
         plt.title("Occupancy Histogram")
         
         plt.figure(3)
-        plt.hist(x3, bins = 1, orientation="horizontal")
-        plt.ylabel("CO2")
+        plt.hist(x3)
+        plt.ylabel("Occurrences")
+        plt.xlabel("CO2")
         plt.title("CO2 Histogram")
         plt.show()
         
