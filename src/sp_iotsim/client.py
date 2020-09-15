@@ -146,8 +146,8 @@ def cli():
         x3 = carb[chooseroom].dropna()
         print(carb[chooseroom].dropna())
         
-        print(time.var())
-        print(time.median())
+        #print(time.var())
+        #print(time.median())
         
         
         plt.figure(1)
