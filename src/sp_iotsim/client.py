@@ -149,11 +149,11 @@ def cli():
         
         
         
-        #plt.figure(1)
-        #temp.hist()
-        #plt.xlabel("Occurance")
-        #plt.ylabel("Temperature")
-        #plt.title("Frequency of Temperatures")
+        plt.figure(1)
+        x1.hist()
+        plt.xlabel("Occurance")
+        plt.ylabel("Temperature")
+        plt.title("Frequency of Temperatures")
         
         #plt.figure(2)
         #occu.hist()
