@@ -93,20 +93,17 @@ def cli():
         occupancy = {}
         co2 = {}
         times = []
-        timesint = []
         
         with open("data.txt", "r") as stuff:
             for line in stuff:
                 r = json.loads(line)
                 roomkeys = list(r.keys())[0]
                 time = datetime.fromisoformat(r[roomkeys]["time"])
-                timeint = datetime.time(r[roomkeys]["time"])
                 
                 temperature[time] = {roomkeys: r[roomkeys]["temperature"][0]}
                 occupancy[time] = {roomkeys: r[roomkeys]["occupancy"][0]}
                 co2[time] = {roomkeys: r[roomkeys]["co2"][0]}
                 times.append(time)
-                timesint.append(timeint)
 
       
         
@@ -153,10 +150,9 @@ def cli():
         
         
         
-        timekey = pd.DataFrame(times, columns = ["Date and Time"])
-        timeintkey = pd.DataFrame(timesint, columns = ["Time"])
+        timekey = pd.DataFrame(times, columns = ["Date","time"])
         print(timekey)
-        print(timeintkey)
+
         
         
         
