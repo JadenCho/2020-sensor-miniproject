@@ -58,7 +58,7 @@ async def main(port: int, addr: str, max_packets: int, log_file: Path = None):
 
         for _ in range(max_packets):
             data = await websocket.recv()
-            print(data)
+            #print(data)
             print_stdout = sys.stdout
 
             with open("data.txt", "a") as f:
@@ -171,14 +171,12 @@ def cli():
         plt.ylabel("Occurance")
         plt.title("Frequency of CO2 Levels")
         
-        timess = temp.index
-        plt.figure(4)
-        plt.hist(np.diff(timess.values).astype(np.int64) // 1000000000)
-        plt.xlabel("Time (seconds)")
-        plt.ylabel("Occurrences")
-        plt.title("Time Intervals between Sensor Readings")
+        ax = plt.figure(4).gca()
+        ax.hist(temp["temperature"].index.to_series().diff().dt.total_seconds(), bins=100)
+        ax.set_xlabel("Time (seconds)")
+        ax.set_title("Time interval")
+        ax.set_ylabel("# of occurences")
         plt.show()
-        
         
         os.remove("data.txt")
 
