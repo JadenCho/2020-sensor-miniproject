@@ -98,8 +98,8 @@ def cli():
                 time = datetime.fromisoformat(r[room]["time"])
                 
                 temperature[time] = {room: r[room]["temperature"][0]}
-            occupancy[time] = {room: r[room]["occupancy"][0]}
-            co2[time] = {room: r[room]["co2"][0]}
+                occupancy[time] = {room: r[room]["occupancy"][0]}
+                co2[time] = {room: r[room]["co2"][0]}
 
         print(temperature)
         os.remove("data.txt")
