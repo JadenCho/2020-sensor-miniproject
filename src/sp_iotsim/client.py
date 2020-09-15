@@ -121,12 +121,6 @@ def cli():
         print(temp[chooseroom].dropna().median())
         print("\n")
         
-        #plt.hist(x1)
-        #tempmean = temp[chooseroom].dropna().mean()
-        #tempstd = temp[chooseroom].dropna().std()
-
-        #temp_pdf = ss.norm.pdf(x1, tempmean, tempstd)
-        #plt.plot(x1, temp_pdf, label="Temperature PDF")
         
         
         
@@ -144,13 +138,7 @@ def cli():
         print(occu[chooseroom].dropna().median())
         print("\n")
         
-        #plt.hist(x2)
-        #occumean = occu[chooseroom].dropna().mean()
-        #occustd = occu[chooseroom].dropna().std()
-        
-        #occu_pdf = ss.norm.pdf(x2, occumean, occustd)
-        #plt.plot(x2, occu_pdf, label="Occupancy PDF")
-        
+       
         
         
         print("Now Displaying CO2...")
@@ -158,22 +146,22 @@ def cli():
         x3 = carb[chooseroom].dropna()
         print(carb[chooseroom].dropna())
         
-        #plt.hist(x3)
-        #carbmean = carb[chooseroom].dropna().mean()
-        #carbstd = carb[chooseroom].dropna().std()
-        
-        #carb_pdf = ss.norm.pdf(x3, carbmean, carbstd)
-        #plt.plot(x3, carb_pdf, label="CO2 PDF")
         
         
-        #plt.legend();
+        
         plt.figure(1)
         plt.subplot(311)
         plt.hist(x1)
+        plt.ylabel("Temperature")
+        plt.title("Temperature Histogram")
         plt.subplot(312)
         plt.hist(x2)
+        plt.ylabel("Occupancy")
+        plt.title("Occupancy Histogram")
         plt.subplot(313)
         plt.hist(x3)
+        plt.ylabel("CO2")
+        plt.title("CO2 Histogram")
         plt.show()
         
         os.remove("data.txt")
