@@ -149,44 +149,25 @@ def cli():
         
         
         
-        #plt.figure(1)
-        #plt.hist(x1)
-        #plt.ylabel("Occurrences")
-        #plt.xlabel("Temperature")
-        #plt.title("Temperature Histogram")
-        
-        #plt.figure(2)
-        #plt.hist(x2)
-        #plt.ylabel("Occurrences")
-        #plt.xlabel("Occupancy")
-        #plt.title("Occupancy Histogram")
-        
-        #plt.figure(3)
-        #plt.hist(x3)
-        #plt.ylabel("Occurrences")
-        #plt.xlabel("CO2")
-        #plt.title("CO2 Histogram")
-        #plt.show()
-        
         plt.figure(1)
         temp.hist()
         plt.xlabel("Occurance")
         plt.ylabel("Temperature")
         plt.title("Frequency of Temperatures")
         
-        plt.figure(2)
-        occu.hist()
-        plt.xlabel("Occurance")
-        plt.ylabel("People")
-        plt.title("Frequency of People")
+        #plt.figure(2)
+        #occu.hist()
+        #plt.xlabel("Occurance")
+        #plt.ylabel("People")
+        #plt.title("Frequency of People")
         
-        plt.figure(3)
-        carb.hist()
-        plt.xlabel("Occurance")
-        plt.ylabel("CO2 Levels")
-        plt.title("Frequency of CO2")
+        #plt.figure(3)
+        #carb.hist()
+        #plt.xlabel("Occurance")
+        #plt.ylabel("CO2 Levels")
+        #plt.title("Frequency of CO2")
         
-        time = temp.index
+        #time = temp.index
         plt.figure(4)
         plt.hist(np.diff(time.values).astype(np.int64) // 1000000000)
         plt.xlabel("Time (seconds)")
