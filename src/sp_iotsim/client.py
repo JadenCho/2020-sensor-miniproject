@@ -125,7 +125,7 @@ def cli():
         tempstd = temp[chooseroom].dropna().std()
 
         temp_pdf = ss.norm.pdf(x1, tempmean, tempstd)
-        plt.plot(x1, temp_pdf, label=' Temperature PDF')
+        plt.plot(x1, temp_pdf, label='Temperature PDF')
         
         
         
@@ -147,7 +147,7 @@ def cli():
         occustd = occu[chooseroom].dropna().std()
         
         occu_pdf = ss.norm.pdf(x2, occumean, occustd)
-        plt.plot(x2, occu_pdf, label=' Occupancy PDF')
+        plt.plot(x2, occu_pdf, label='Occupancy PDF')
         
         
         
@@ -160,7 +160,7 @@ def cli():
         carbstd = carb[chooseroom].dropna().std()
         
         carb_pdf = ss.norm.pdf(x3, carbmean, carbstd)
-        plt.plot(x3, carb_pdf, label=' CO2 PDF')
+        plt.plot(x3, carb_pdf, label='CO2 PDF')
         
         plt.show()
         plt.legend();
