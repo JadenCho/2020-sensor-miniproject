@@ -152,6 +152,7 @@ def cli():
         
         timekey = pd.DataFrame(times, columns = ["Date and Time"])
         print(timekey)
+        print(timekey.values)
         print(timekey.var())
         print(timekey.median())
         
@@ -174,9 +175,9 @@ def cli():
         plt.ylabel("Occurance")
         plt.title("Frequency of CO2 Levels")
         
-        time = temp.index
+        timess = temp.index
         plt.figure(4)
-        plt.hist(np.diff(time.values).astype(np.int64) // 1000000000)
+        plt.hist(np.diff(timess.values).astype(np.int64) // 1000000000)
         plt.xlabel("Time (seconds)")
         plt.ylabel("Occurrences")
         plt.title("Time Intervals between Sensor Readings")
