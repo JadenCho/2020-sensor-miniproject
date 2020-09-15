@@ -8,39 +8,27 @@ These dictionaries are immediately put into Pandas DataFrames for easier process
 
 Feel free to save your data in a better format--I was just showing what one might do quickly.
 """
-import pandas
+
 from pathlib import Path
 import argparse
-import json
-from datetime import datetime
-import typing as T
+import pandas
 import matplotlib.pyplot as plt
-import numpy as np
+
+from sp_iotsim.fileio import load_data
 
 
-def load_data(file: Path) -> T.Dict[str, pandas.DataFrame]:
+def plot_time(time: pandas.Series):
+    """
+    NOTE: in this simulation, time interval is same distribution for all sensors and rooms
 
-    temperature = {}
-    occupancy = {}
-    co2 = {}
+    https://docs.scipy.org/doc/scipy/reference/generated/scipy.stats.rv_continuous.fit.html
+    """
 
-    with open(file, "r") as f:
-        for line in f:
-            r = json.loads(line)
-            room = list(r.keys())[0]
-            time = datetime.fromisoformat(r[room]["time"])
-
-            temperature[time] = {room: r[room]["temperature"][0]}
-            occupancy[time] = {room: r[room]["occupancy"][0]}
-            co2[time] = {room: r[room]["co2"][0]}
-
-    data = {
-        "temperature": pandas.DataFrame.from_dict(temperature, "index").sort_index(),
-        "occupancy": pandas.DataFrame.from_dict(occupancy, "index").sort_index(),
-        "co2": pandas.DataFrame.from_dict(co2, "index").sort_index(),
-    }
-
-    return data
+    ax = plt.figure().gca()
+    ax.hist(time.diff().dt.total_seconds(), bins=100)
+    ax.set_xlabel("Time (seconds)")
+    ax.set_title("Time interval")
+    ax.set_ylabel("# of occurences")
 
 
 if __name__ == "__main__":
@@ -52,12 +40,10 @@ if __name__ == "__main__":
 
     data = load_data(file)
 
-    for k in data:
-        # data[k].plot()
-        time = data[k].index
-        data[k].hist()
-        plt.figure()
-        plt.hist(np.diff(time.values).astype(np.int64) // 1000000000)
-        plt.xlabel("Time (seconds)")
+    plot_time(data["temperature"].index.to_series())
+
+    # for k in data:
+    #     data[k].hist()
+    #     plt.figure()
 
     plt.show()
