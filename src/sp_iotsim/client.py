@@ -162,7 +162,7 @@ def cli():
         carb_pdf = ss.norm.pdf(x3, carbmean, carbstd)
         plt.plot(x3, carb_pdf, label=' CO2 PDF')
         
-        
+        plt.show()
         plt.legend();
         os.remove("data.txt")
 
