@@ -146,26 +146,27 @@ def cli():
         x3 = carb[chooseroom].dropna()
         print(carb[chooseroom].dropna())
         
-        
+        print(time.var())
+        print(time.median())
         
         
         plt.figure(1)
         x1.hist()
-        plt.xlabel("Occurance")
-        plt.ylabel("Temperature")
+        plt.xlabel("Temperature")
+        plt.ylabel("Occurance")
         plt.title("Frequency of Temperatures")
         
-        #plt.figure(2)
-        #occu.hist()
-        #plt.xlabel("Occurance")
-        #plt.ylabel("People")
-        #plt.title("Frequency of People")
+        plt.figure(2)
+        occu.hist()
+        plt.xlabel("People")
+        plt.ylabel("Occurance")
+        plt.title("Frequency of the Number of People")
         
-        #plt.figure(3)
-        #carb.hist()
-        #plt.xlabel("Occurance")
-        #plt.ylabel("CO2 Levels")
-        #plt.title("Frequency of CO2")
+        plt.figure(3)
+        carb.hist()
+        plt.xlabel("CO2 Levels")
+        plt.ylabel("Occurance")
+        plt.title("Frequency of CO2 Levels")
         
         time = temp.index
         plt.figure(4)
