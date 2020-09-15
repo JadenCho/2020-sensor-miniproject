@@ -102,6 +102,7 @@ def cli():
             co2[time] = {room: r[room]["co2"][0]}
 
         print(temperature)
+        os.remove("data.txt")
 
 
 if __name__ == "__main__":
