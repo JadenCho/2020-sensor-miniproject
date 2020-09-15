@@ -102,7 +102,7 @@ def cli():
                 co2[time] = {room: r[room]["co2"][0]}
 
         print("Now Printing Temperature...")
-        temp = pd.DataFrame.from_dict(temperature)
+        temp = pd.DataFrame.from_dict(temperature, "index").sort_index()
         print(temp)
         #tempval = temperature.values()
         #temp = list(tempval)
