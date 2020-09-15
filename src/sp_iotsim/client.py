@@ -168,16 +168,16 @@ def cli():
         #plt.title("CO2 Histogram")
         #plt.show()
         
-        for k in temp:
+        #for k in temp:
         #
-            time = temp[k].index
-            temp[k].hist()
-            plt.figure()
-            plt.hist(np.diff(time.values).astype(np.int64) // 1000000000)
-            plt.xlabel("Time (seconds)")
-            plt.ylabel("Occurrences")
-            plt.title("Time Intervals between Sensor Readings")
-            plt.show()
+        time = temp.index
+        temp.hist()
+        plt.figure()
+        plt.hist(np.diff(time.values).astype(np.int64) // 1000000000)
+        plt.xlabel("Time (seconds)")
+        plt.ylabel("Occurrences")
+        plt.title("Time Intervals between Sensor Readings")
+        plt.show()
         
         
         os.remove("data.txt")
