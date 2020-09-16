@@ -30,13 +30,13 @@ print("\n")
 temp_values = temp[chooseroom].dropna()
 
 temp_std = np.std(temp_values)   #standard deviation of temperature values
-temp_mean = np.mean(temp_values) # mean of temperature values
+temp_mean_original = np.mean(temp_values) # mean of temperature values (before taking out outlier points)
 
 totaltempvals = len(temp_values) #total number of temperature data points
 tempoutliers = 0                 #initialize counter for number of "bad" data points
 
 for k in temp_values:                   #index through all temperature data points. if a data point is an outlier, the counter is incremented and the value is removed.
-    if ((temp_values[k] > (temp_std + temp_mean)) or (temp_values[k] < (temp_mean - temp_std)))     #conditional for removing outliers        
+    if ((temp_values[k] > (temp_std + temp_mean)) or (temp_values[k] < (temp_mean - temp_std)))     #conditional for removing outliers (within one standard dev of mean)        
         remove(temp_values[k])
         tempoutliers = tempoutliers + 1
         
