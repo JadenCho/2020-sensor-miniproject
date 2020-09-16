@@ -28,7 +28,7 @@ This distribution mimics an Erlang distribution with k = 1 and mu = 2.
 
 ### Task 3  - Design
 1.  Our algorithm, (temp.py in the src/sp_iotsim folder) analyzes the temperature data for the office. It removes "outlier" points from the data (anything outside of one standard deviation from the mean), and then calculates the median and variance of the new temperature data. It also calculated the percentage of "bad" data points. Here is a sample output:  
-![algorithm output](/2020-sensor-miniproject-Pics/TempAnaOut.png)
+![algorithm output](/2020-sensor-miniproject-Pics/TempAnaOut.PNG)
 
 2.  A persistent change in temperature doesn't always indicate a failed sensor, but more often than not, we believe it would. For example, if the room temperature is consistently coming back to be 70C, perhaps the room is on fire. But if it persists for a while, the most probable answer would be that the sensor had failed. In some instances, we got back readings of -80C. Unless the office somehow moved to Antarctica, this would be pretty impossible. So in this case, it seems to be surely a failed sensor.
 3.  Our temperature values were more or less centered around 23C, so perhaps 20-25C would be good bounds. Anything outside of the range isn't a comfortable room temperature.
