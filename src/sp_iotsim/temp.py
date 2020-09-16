@@ -32,11 +32,11 @@ temp_values = temp[chooseroom].dropna()
 #print(temp_values)
 
 temp_std = np.std(temp_values)   #standard deviation of temperature values
-print("Standard Dev")
-print(temp_std)
+#print("Standard Dev")
+#print(temp_std)
 temp_mean_original = np.mean(temp_values) # mean of temperature values (before taking out outlier points)
-print("Original Mean")
-print(temp_mean_original)
+#print("Original Mean")
+#print(temp_mean_original)
 
 totaltempvals = len(temp_values) #total number of temperature data points
 tempoutliers = 0                 #initialize counter for number of "bad" data points
@@ -47,7 +47,7 @@ for k in temp_values:                  #index through all temperature data point
         newtemp_values.append(k)
         tempoutliers = tempoutliers + 1
         
-percentage = tempoutliers/totaltempvals                         #percentage of bad points/total
+percentage = round((tempoutliers/totaltempvals)*100,2)                         #percentage of bad points/total
 print("The percent of bad data points is ", percentage)
 
 tempmean = ss.mean(newtemp_values)                                   #mean of temperature values with outlier points removed
