@@ -148,10 +148,6 @@ def cli():
         
         
         
-        #timekey = pd.DataFrame(times, columns = ["Time"])
-        #print(timekey)
-
-        
         
         
         plt.figure(1)
@@ -182,11 +178,15 @@ def cli():
         plt.title("Time Intervals between Sensor Readings")
         
         timeint = np.diff(times.values).astype(np.int64) / 1000000000
-        print(timeint)
+        #print(timeint)
         timeintvar = np.var(timeint)
+        print("Time Interval Variance is...")
         print(timeintvar)
+        print("\n")
         timeintmed = np.median(timeint)
+        print("Time Interval Median is...")
         print(timeintmed)
+        print("\n")
     
         plt.show()
         
