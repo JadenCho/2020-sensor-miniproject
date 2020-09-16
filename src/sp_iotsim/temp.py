@@ -41,7 +41,7 @@ tempoutliers = 0                 #initialize counter for number of "bad" data po
 indices = temp_values.index
 
 for k in indices:                  #index through all temperature data points. if a data point is an outlier, the counter is incremented and the value is removed.
-    if ((temp_values[indicies[k]] > (temp_std + temp_mean_original)) or (temp_values[indicies[k]] < (temp_mean_original - temp_std))):     #conditional for removing outliers (within one standard dev of mean)        
+    if ((temp_values[indices[k]] > (temp_std + temp_mean_original)) or (temp_values[indices[k]] < (temp_mean_original - temp_std))):     #conditional for removing outliers (within one standard dev of mean)        
         remove(temp_values[k])
         tempoutliers = tempoutliers + 1
         
