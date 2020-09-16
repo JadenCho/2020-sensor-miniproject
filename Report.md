@@ -22,6 +22,7 @@ We chose to look at the data from the office.
 ![office occupancy](/2020-sensor-miniproject-Pics/officeoccu.png)  
 ![office co2](/2020-sensor-miniproject-Pics/officeco2.png)
 4. The mean of of the time intervals is () and the variance is (). Here is the probability density as a histogram:  
+![time intervals hist](/2020-sensor-miniproject-Pics/tempints.png)
 
 (Answer question here)
 
