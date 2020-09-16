@@ -48,7 +48,7 @@ for k in temp_values:                  #index through all temperature data point
         tempoutliers = tempoutliers + 1
         
 percentage = round((tempoutliers/totaltempvals)*100,2)                         #percentage of bad points/total
-print("The percent of bad data points is ", percentage)
+print("The percent of bad data points is ", percentage,"%")
 
 tempmean = ss.mean(newtemp_values)                                   #mean of temperature values with outlier points removed
 print("The mean of the temperature values is ", tempmean)
