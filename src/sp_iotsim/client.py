@@ -63,7 +63,7 @@ async def main(port: int, addr: str, max_packets: int, log_file: Path = None):
             #print(data)
             print_stdout = sys.stdout               #Redirects printed JSON data
 
-            with open(log_file, "a") as f:          #Opens/creates file do append JSON string
+            with open(log_file, "a") as f:          #Opens/creates file to append JSON string
                 sys.stdout = f 
                 print(data)                         #Prints JSON data to file
                 sys.stdout = print_stdout           #Reverts output back to terminal
