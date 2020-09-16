@@ -107,11 +107,11 @@ def cli():
         
         chooseroom = input("Please choose a room: office, lab1, class1\n")
         
-        print("Now Displaying Temperature...")
+        #print("Now Displaying Temperature...")
         temp = pd.DataFrame.from_dict(temperature, "index").sort_index()
         x1 = temp[chooseroom].dropna()
-        print(temp[chooseroom].dropna())
-        print("\n")
+        #print(temp[chooseroom].dropna())
+        #print("\n")
         
         print("Temperature Variance is...")
         print(temp[chooseroom].dropna().var())
@@ -124,11 +124,11 @@ def cli():
         
         
         
-        print("Now Displaying Occupancy...")
+        #print("Now Displaying Occupancy...")
         occu = pd.DataFrame.from_dict(occupancy, "index").sort_index()
         x2 = occu[chooseroom].dropna()
-        print(occu[chooseroom].dropna())
-        print("\n")
+        #print(occu[chooseroom].dropna())
+        #print("\n")
         
         print("Occupancy Variance is...")
         print(occu[chooseroom].dropna().var())
@@ -141,10 +141,10 @@ def cli():
        
         
         
-        print("Now Displaying CO2...")
+        #print("Now Displaying CO2...")
         carb = pd.DataFrame.from_dict(co2, "index").sort_index()
         x3 = carb[chooseroom].dropna()
-        print(carb[chooseroom].dropna())
+        #print(carb[chooseroom].dropna())
         
         
         
@@ -168,9 +168,9 @@ def cli():
         plt.ylabel("Occurance")
         plt.title("Frequency of CO2 Levels")
         
-        #for k in temp:
+
         times = temp.index
-        #temp.hist()
+
         plt.figure(4)
         plt.hist(np.diff(times.values).astype(np.int64) // 1000000000, bins = 100)
         plt.xlabel("Time (seconds)")
@@ -178,7 +178,6 @@ def cli():
         plt.title("Time Intervals between Sensor Readings")
         
         timeint = np.diff(times.values).astype(np.int64) / 1000000000
-        #print(timeint)
         timeintvar = np.var(timeint)
         print("Time Interval Variance is...")
         print(timeintvar)
