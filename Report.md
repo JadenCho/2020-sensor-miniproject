@@ -3,7 +3,9 @@
 After running the code, we see that the greeting string issued is **ECE Senior Capstone IoT Simulator** 
 
 ## Task 1 - Data Flow
-Below is our code, which saves the incoming JSON data to a text file:  
+Below is our code (added to client.py), which saves the incoming JSON data to a text file. You pass the name of the file you want to write to into the command line. For example, *python -m sp_iotsim.client mydata.txt* would save the incoming data into a text file called mydata.
+
+Put code here!!!!!
 
 ## Task 2  - Analysis
 We chose to look at the data from the office. 
@@ -14,7 +16,7 @@ We chose to look at the data from the office.
 
 (Answer question here)
 
-## Task 3  - Design
+## Task 3  - Desig
 1. Here is our algorithm (give filename):  
 ()  
 
