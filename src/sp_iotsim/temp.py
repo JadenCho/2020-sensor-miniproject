@@ -28,15 +28,18 @@ chooseroom = input("Please choose a room: office, lab1, class1\n")
 print("\n")
     
 temp_values = temp[chooseroom].dropna()
+print(temp_values)
 
 temp_std = np.std(temp_values)   #standard deviation of temperature values
+print(temp_std)
 temp_mean_original = np.mean(temp_values) # mean of temperature values (before taking out outlier points)
+print(temp_mean_original)
 
 totaltempvals = len(temp_values) #total number of temperature data points
 tempoutliers = 0                 #initialize counter for number of "bad" data points
 
-for k in temp_values:                   #index through all temperature data points. if a data point is an outlier, the counter is incremented and the value is removed.
-    if ((temp_values[k] > (temp_std + temp_mean_original)) or (temp_values[k] < (temp_mean_original - temp_std))):     #conditional for removing outliers (within one standard dev of mean)        
+for index, row in temp_values.iterrows():                   #index through all temperature data points. if a data point is an outlier, the counter is incremented and the value is removed.
+    if ((temp_values[row] > (temp_std + temp_mean_original)) or (temp_values[row] < (temp_mean_original - temp_std))):     #conditional for removing outliers (within one standard dev of mean)        
         remove(temp_values[k])
         tempoutliers = tempoutliers + 1
         
