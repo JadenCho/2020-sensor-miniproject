@@ -181,7 +181,7 @@ def cli():
         plt.ylabel("Occurrences")
         plt.title("Time Intervals between Sensor Readings")
         
-        print(np.diff(times.values).astype(np.int64) // 1000000000)   
+        print(np.diff(times.values).astype(np.int64) / 1000000000)   
     
         plt.show()
         
