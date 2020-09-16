@@ -152,7 +152,7 @@ def cli():
         
         
         plt.figure(1)
-        x1.hist()
+        x1.hist(bins = 100)
         plt.xlabel("Temperature")
         plt.ylabel("Occurance")
         plt.title("Frequency of Temperatures")
