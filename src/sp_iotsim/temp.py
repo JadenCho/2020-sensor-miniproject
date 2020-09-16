@@ -40,7 +40,7 @@ tempoutliers = 0                 #initialize counter for number of "bad" data po
 
 for k in temp_values:                  #index through all temperature data points. if a data point is an outlier, the counter is incremented and the value is removed.
     if ((k > (temp_std + temp_mean_original)) or (k < (temp_mean_original - temp_std))):     #conditional for removing outliers (within one standard dev of mean)        
-        remove(k)
+        del(k)
         tempoutliers = tempoutliers + 1
         
 percentage = tempoutliers/totaltempvals                         #percentage of bad points/total
