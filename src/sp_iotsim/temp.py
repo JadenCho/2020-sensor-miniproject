@@ -40,7 +40,7 @@ print(temp_mean_original)
 totaltempvals = len(temp_values) #total number of temperature data points
 tempoutliers = 0                 #initialize counter for number of "bad" data points
 
-for index, val in temp_values[:]:                  #index through all temperature data points. if a data point is an outlier, the counter is incremented and the value is removed.
+for index, val in temp_values:                  #index through all temperature data points. if a data point is an outlier, the counter is incremented and the value is removed.
     if ((val > (temp_std + temp_mean_original)) or (val < (temp_mean_original - temp_std))):     #conditional for removing outliers (within one standard dev of mean)        
         temp_values.drop(index)
         tempoutliers = tempoutliers + 1
