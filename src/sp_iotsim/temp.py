@@ -28,9 +28,12 @@ chooseroom = input("Please choose a room: office, lab1, class1\n")
 print("\n")
     
 temp_values = temp[chooseroom].dropna()
+print(temp_values)
 
 temp_std = np.std(temp_values)   #standard deviation of temperature values
-temp_mean_original = np.mean(temp_values) # mean of temperature values (before taking out outlier points)
+print(temp_std)
+temp_mean_original = np.mean(temp_values)   # mean of temperature values (before taking out outlier points)
+print(temp_mean_original)
 
 totaltempvals = len(temp_values) #total number of temperature data points
 tempoutliers = 0                 #initialize counter for number of "bad" data points
