@@ -20,4 +20,4 @@ data = load_data(filepath)
 #                
 #        temperature[time] = {roomkeys: r[roomkeys]["temperature"][0]}
 
-temp = pd.DataFrame.from_dict(data["temperature"], "index").sort_index()
+temp = pd.DataFrame.from_dict(data, "index").sort_index()
