@@ -28,7 +28,7 @@ import matplotlib.pyplot as plt
 import scipy.stats as ss
 
 
-async def main(port: int, addr: str, max_packets: int, log_file: Path):
+async def main(port: int, addr: str, max_packets: int, log_file: Path = None):
     """
 
     Parameters
@@ -92,7 +92,7 @@ def cli():
         co2 = {}
         times = []
         
-        with open(log_file, "r") as stuff:
+        with open(P.log, "r") as stuff:
             for line in stuff:
                 r = json.loads(line)
                 roomkeys = list(r.keys())[0]
