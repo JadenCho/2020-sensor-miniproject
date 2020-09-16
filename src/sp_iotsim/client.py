@@ -60,12 +60,12 @@ async def main(port: int, addr: str, max_packets: int, log_file: Path = None):
         for _ in range(max_packets):
             data = await websocket.recv()
             #print(data)
-            print_stdout = sys.stdout
+            print_stdout = sys.stdout               #Redirects printed JSON data
 
-            with open(log_file, "a") as f:
+            with open(log_file, "a") as f:          #Opens/creates file do append JSON string
                 sys.stdout = f 
-                print(data)
-                sys.stdout = print_stdout 
+                print(data)                         #Prints JSON data to file
+                sys.stdout = print_stdout           #Reverts output back to terminal
            
 
 def cli():
@@ -87,98 +87,98 @@ def cli():
     except KeyboardInterrupt:
         print(P.log)
         
-        temperature = {}
+        temperature = {}                            #At keyboard interrupt, creates dicts for each variable
         occupancy = {}
         co2 = {}
         times = []
         
-        with open(P.log, "r") as stuff:
+        with open(P.log, "r") as stuff:             #Open file with JSON data to read into
             for line in stuff:
-                r = json.loads(line)
-                roomkeys = list(r.keys())[0]
+                r = json.loads(line)                #Loops through every line in file
+                roomkeys = list(r.keys())[0]        #Creates "keys" to use as index for dicts
                 time = datetime.fromisoformat(r[roomkeys]["time"])
                 
-                temperature[time] = {roomkeys: r[roomkeys]["temperature"][0]}
+                temperature[time] = {roomkeys: r[roomkeys]["temperature"][0]}       #Dict with data of each variable 
                 occupancy[time] = {roomkeys: r[roomkeys]["occupancy"][0]}
                 co2[time] = {roomkeys: r[roomkeys]["co2"][0]}
                 times.append(time)
 
       
         
-        chooseroom = input("Please choose a room: office, lab1, class1\n")
+        chooseroom = input("Please choose a room: office, lab1, class1\n")          #User chooses room
         print("\n")
         
         #print("Now Displaying Temperature...")
-        temp = pd.DataFrame.from_dict(temperature, "index").sort_index()
-        x1 = temp[chooseroom].dropna()
-        #print(temp[chooseroom].dropna())
+        temp = pd.DataFrame.from_dict(temperature, "index").sort_index()            #Load dict into panda dataframe
+        x1 = temp[chooseroom].dropna()                                              #Remove any NaN from dataframe
+        #print(temp[chooseroom].dropna())   
         #print("\n")
         
         print("Temperature Variance is...")
-        print(temp[chooseroom].dropna().var())
+        print(temp[chooseroom].dropna().var())                                      #Print variance of data
         print("\n")
         
         print("Temperature Median is...")
-        print(temp[chooseroom].dropna().median())
+        print(temp[chooseroom].dropna().median())                                   #Print median of data
         print("\n")
         
         
         
         
         #print("Now Displaying Occupancy...")
-        occu = pd.DataFrame.from_dict(occupancy, "index").sort_index()
-        x2 = occu[chooseroom].dropna()
+        occu = pd.DataFrame.from_dict(occupancy, "index").sort_index()              #Load dict into panda dataframe
+        x2 = occu[chooseroom].dropna()                                              #Remove any NaN from dataframe
         #print(occu[chooseroom].dropna())
         #print("\n")
         
         print("Occupancy Variance is...")
-        print(occu[chooseroom].dropna().var())
+        print(occu[chooseroom].dropna().var())                                      #Print variance of data
         print("\n")
         
         print("Occupancy Median is...")
-        print(occu[chooseroom].dropna().median())
+        print(occu[chooseroom].dropna().median())                                   #Print median of data
         print("\n")
         
        
         
         
         #print("Now Displaying CO2...")
-        carb = pd.DataFrame.from_dict(co2, "index").sort_index()
-        x3 = carb[chooseroom].dropna()
+        carb = pd.DataFrame.from_dict(co2, "index").sort_index()                    #Load dict into panda dataframe
+        x3 = carb[chooseroom].dropna()                                              #Remove any NaN from dataframe
         #print(carb[chooseroom].dropna())
         
         
         
         
         
-        plt.figure(1)
+        plt.figure(1)                                                               #Create histogram plot of data
         x1.hist(bins = 100)
         plt.xlabel("Temperature")
         plt.ylabel("Occurance")
         plt.title("Frequency of Temperatures")
         
-        plt.figure(2)
+        plt.figure(2)                                                               #Create histogram plot of data
         x2.hist()
         plt.xlabel("People")
         plt.ylabel("Occurance")
         plt.title("Frequency of the Number of People")
         
-        plt.figure(3)
+        plt.figure(3)                                                               #Create histogram plot of data
         x3.hist()
         plt.xlabel("CO2 Levels")
         plt.ylabel("Occurance")
         plt.title("Frequency of CO2 Levels")
         
 
-        times = temp.index
+        times = temp.index                                                          #Creates index for time data
 
-        plt.figure(4)
+        plt.figure(4)                                                               #Create plot for time intervals
         plt.hist(np.diff(times.values).astype(np.int64) // 1000000000, bins = 100)
         plt.xlabel("Time (seconds)")
         plt.ylabel("Occurrences")
         plt.title("Time Intervals between Sensor Readings")
         
-        timeint = np.diff(times.values).astype(np.int64) / 1000000000
+        timeint = np.diff(times.values).astype(np.int64) / 1000000000               
         timeintvar = np.var(timeint)
         print("Time Interval Variance is...")
         print(timeintvar)
