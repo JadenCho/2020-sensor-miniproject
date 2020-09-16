@@ -50,8 +50,8 @@ for k in temp_values:                  #index through all temperature data point
 percentage = round((tempoutliers/totaltempvals)*100,2)                         #percentage of bad points/total
 print("The percent of bad data points is ", percentage,"%")
 
-tempmean = ss.mean(newtemp_values)                                   #mean of temperature values with outlier points removed
-print("The mean of the temperature values is ", round(tempmean,2),"C")
+tempmed = ss.median(newtemp_values)                                   #median of temperature values with outlier points removed
+print("The median of the temperature values is ", round(tempmed,2),"C")
 
 tempvar = ss.variance(newtemp_values)                                     #variance of temperature values with outlier points removed
 print("The variance of the temperature values is ", round(tempvar,2),"C")    
