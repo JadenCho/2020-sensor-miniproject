@@ -39,10 +39,9 @@ totaltempvals = len(temp_values) #total number of temperature data points
 tempoutliers = 0                 #initialize counter for number of "bad" data points
 
 for k in temp_values:                  #index through all temperature data points. if a data point is an outlier, the counter is incremented and the value is removed.
-    print(k)
-    #if ((temp_values[indices] > (temp_std + temp_mean_original)) or (temp_values[indices] < (temp_mean_original - temp_std))):     #conditional for removing outliers (within one standard dev of mean)        
-    #    remove(temp_values[k])
-    #    tempoutliers = tempoutliers + 1
+    if ((k > (temp_std + temp_mean_original)) or (k < (temp_mean_original - temp_std))):     #conditional for removing outliers (within one standard dev of mean)        
+        remove(k)
+        tempoutliers = tempoutliers + 1
         
 percentage = tempoutliers/totaltempvals                         #percentage of bad points/total
 print("The percent of bad data points is ", percentage)
