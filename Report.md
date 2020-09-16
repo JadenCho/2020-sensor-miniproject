@@ -8,7 +8,7 @@ Below is our code added to client.py, which saves the incoming JSON data to a te
 
     print_stdout = sys.stdout               #Redirects printed JSON data
 
-    with open(log_file, "a") as f:          #Opens/creates file do append JSON string
+    with open(log_file, "a") as f:          #Opens/creates file to append JSON string
         sys.stdout = f 
         print(data)                         #Prints JSON data to file
         sys.stdout = print_stdout           #Reverts output back to terminal
@@ -36,6 +36,6 @@ This distribution mimics an Erlang distribution with k = 1 and mu = 2.
 ### Task 4 - Conclusions
 1.  The data that we are receiveing pertaining to temperature, Co2 levels, and occupancy would all be important in the real world. For example, if you saw sensor readings returning values that are too high or low, you may have a problem with the heating/AC system in that room. CO2 readings have becoming increasingly important in the context of COVID-19, where air quality may dictate the chance of transmission. You could also put occupancy in the context of COVID-19 -- it would be important to know if capacity guidelines are being violated. During more normal times, it is also important not to exceed the occupancy of a room in case of emergency.  
 2.  If we view this project as a sort of pseudo-HVAC system, then it would lack sensors for things like pressure and humidity. The temperature sensors in real HVAC systems not only record the ambient temperature in the room, but also the gases and/or liquids used to keep the room at temperature. Pressure sensors work alongside temperature sensors to provide efficiency. Humidity sensors also help to control humidity which largely contributes to air quality and how comfortable the room is.  
-3.  
-4.  
+3.  The difficulty of using the Python websockets would be considerably less when compard to that of compiled languages such as C/C++. This is generally due to the fact that most webservers have better integration with Python than C++. This allows for more general freedom from having to create socket managements and such.
+4.  In general, it would be better to have the server poll the sensors. While there are cases where sensors pushing to the server can be useful, it is more practical for the server to poll the data so that it can receive it all at one time when it is ready as opposed to receiving each individual piece of data separately during a time when it is not ready to process it.
 
