@@ -27,6 +27,22 @@ temp = pd.DataFrame.from_dict(temperature, "index").sort_index()
 chooseroom = input("Please choose a room: office, lab1, class1\n")
 print("\n")
     
-x1 = temp[chooseroom].dropna()
+temp_values = temp[chooseroom].dropna()
 
-print(x1)
+totaltempvals = len(temp_values) #total number of temperature data points
+tempoutliers = 0                 #initialize counter for number of "bad" data points
+
+for k in temp_values:                   #index through all temperature data points. if a data point is an outlier, the counter is incremented and the value is removed.
+    if temp_values[k]:             
+        remove(temp_values[k])
+        tempoutliers = tempoutliers + 1
+        
+percentage = tempoutliers/totaltempvals                         #percentage of bad points/total
+print("The percent of bad data points is ", percentage)
+
+tempmean = temp_values.mean()                                   #mean of temperature values with outlier points removed
+print("The mean of the temperature values is ", tempmean)
+
+tempvar = temp_values.var()                                     #variance of temperature values with outlier points removed
+print("The variance of the temperature values is ", tempvar)    
+    
