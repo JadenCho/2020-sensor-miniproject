@@ -24,4 +24,9 @@ with open(filepath, "r") as stuff:
 
 temp = pd.DataFrame.from_dict(temperature, "index").sort_index()
 
-print(temp)
+chooseroom = input("Please choose a room: office, lab1, class1\n")
+print("\n")
+    
+x1 = temp[chooseroom].dropna()
+
+print(x1)
