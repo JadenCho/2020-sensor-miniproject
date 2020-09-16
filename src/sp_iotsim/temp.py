@@ -29,6 +29,9 @@ print("\n")
     
 temp_values = temp[chooseroom].dropna()
 
+temp_std = np.std(temp_values)
+temp_mean = np.mean(temp_values)
+
 totaltempvals = len(temp_values) #total number of temperature data points
 tempoutliers = 0                 #initialize counter for number of "bad" data points
 
