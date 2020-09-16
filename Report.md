@@ -1,4 +1,6 @@
-# 2020 Sensor Miniproject - Jaden Cho & Maxine Loebs - EC 463 - September 17, 2020
+# 2020 Sensor Miniproject
+### Jaden Cho & Maxine Loebs - EC 463 - September 17, 2020
+
 ## Task 0 - Set up Python Websockets
 After running the code, we see that the greeting string issued is **ECE Senior Capstone IoT Simulator** 
 
