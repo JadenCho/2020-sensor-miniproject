@@ -12,7 +12,7 @@ filepath = args.filepath
 #data = load_data(filepath)
 #print(data)
 temperature = {}
-with open(data, "r") as stuff:
+with open(filepath, "r") as stuff:
     for line in stuff:
         r = json.loads(line)
         roomkeys = list(r.keys())[0]
