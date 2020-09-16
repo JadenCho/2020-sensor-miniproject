@@ -15,16 +15,16 @@ Below is our code added to client.py, which saves the incoming JSON data to a te
 
 ### Task 2  - Analysis
 We chose to look at the data from the office. 
-1. The median of the temperature data is () and the variance is ().  
-2. The median of the occupancy data is () and the variance is ().  
+1. The median of the temperature data is 22.986 and the variance is 3.031.  
+2. The median of the occupancy data is 2 and the variance is 2.212.  
 3. Here are the histogram plots for each sensor type:  
 ![office temperature](/2020-sensor-miniproject-Pics/officetemp.png)
 ![office occupancy](/2020-sensor-miniproject-Pics/officeoccu.png)  
 ![office co2](/2020-sensor-miniproject-Pics/officeco2.png)
-4. The mean of of the time intervals is () and the variance is (). Here is the probability density as a histogram:  
+4. The mean of of the time intervals is 0.957 and the variance is 0.897. Here is the probability density as a histogram:  
 ![time intervals hist](/2020-sensor-miniproject-Pics/tempints.png)
 
-(Answer question here)
+This distribution mimics an Erlang distribution with k = 1 and mu = 2.
 
 ### Task 3  - Design
 1.  Our algorithm, (temp.py in the src/sp_iotsim folder) analyzes the temperature data for the office. It removes "outlier" points from the data (anything outside of one standard deviation from the mean), and then calculates the median and variance of the new temperature data. It also calculated the percentage of "bad" data points. 
