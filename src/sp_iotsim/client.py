@@ -179,12 +179,14 @@ def cli():
         plt.ylabel("Occurrences")
         plt.title("Time Intervals between Sensor Readings")
         
-        timeint = np.diff(times.values).astype(np.int64) / 1000000000               
-        timeintvar = np.var(timeint)
+        timeint = np.diff(times.values).astype(np.int64) / 1000000000               #Creates list for time intervals  
+        
+        timeintvar = np.var(timeint)                                                #Calculate and print variance of time interval
         print("Time Interval Variance is...")
         print(timeintvar)
         print("\n")
-        timeintmean = np.mean(timeint)
+        
+        timeintmean = np.mean(timeint)                                              #Calculate and print mean of time interval
         print("Time Interval Mean is...")
         print(timeintmean)
         print("\n")
