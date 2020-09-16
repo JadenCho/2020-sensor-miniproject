@@ -106,6 +106,7 @@ def cli():
       
         
         chooseroom = input("Please choose a room: office, lab1, class1\n")
+        print("\n")
         
         #print("Now Displaying Temperature...")
         temp = pd.DataFrame.from_dict(temperature, "index").sort_index()
@@ -182,9 +183,9 @@ def cli():
         print("Time Interval Variance is...")
         print(timeintvar)
         print("\n")
-        timeintmed = np.median(timeint)
-        print("Time Interval Median is...")
-        print(timeintmed)
+        timeintmean = np.mean(timeint)
+        print("Time Interval Mean is...")
+        print(timeintmean)
         print("\n")
     
         plt.show()
