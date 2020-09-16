@@ -16,7 +16,7 @@ We chose to look at the data from the office.
 
 (Answer question here)
 
-## Task 3  - Desig
+## Task 3  - Design
 1. Here is our algorithm (give filename):  
 ()  
 
