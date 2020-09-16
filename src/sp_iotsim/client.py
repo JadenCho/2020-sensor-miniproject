@@ -181,9 +181,12 @@ def cli():
         plt.ylabel("Occurrences")
         plt.title("Time Intervals between Sensor Readings")
         
-        print(timeint = round(np.diff(times.values).astype(np.int64) / 1000000000,2))
+        timeint = np.diff(times.values).astype(np.int64) / 1000000000
+        print(timeint)
         timeintvar = np.var(timeint)
+        print(timeintvar)
         timeintmed = np.median(timeint)
+        print(timeintmed)
     
         plt.show()
         
