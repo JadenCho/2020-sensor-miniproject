@@ -28,7 +28,7 @@ import matplotlib.pyplot as plt
 import scipy.stats as ss
 
 
-async def main(port: int, addr: str, max_packets: int, log_file: Path = None):
+async def main(port: int, addr: str, max_packets: int, log_file: Path):
     """
 
     Parameters
@@ -62,7 +62,7 @@ async def main(port: int, addr: str, max_packets: int, log_file: Path = None):
             #print(data)
             print_stdout = sys.stdout
 
-            with open("data.txt", "a") as f:
+            with open(log_file, "a") as f:
                 sys.stdout = f 
                 print(data)
                 sys.stdout = print_stdout 
@@ -92,7 +92,7 @@ def cli():
         co2 = {}
         times = []
         
-        with open("data.txt", "r") as stuff:
+        with open(log_file, "r") as stuff:
             for line in stuff:
                 r = json.loads(line)
                 roomkeys = list(r.keys())[0]
@@ -189,7 +189,7 @@ def cli():
     
         plt.show()
         
-        os.remove("data.txt")
+        #os.remove("data.txt")
 
 
 if __name__ == "__main__":
