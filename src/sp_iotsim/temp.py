@@ -7,3 +7,4 @@ args = parser.parse_args()
 filepath = args.filepath
 
 data = load_data(filepath)
+print(data)
