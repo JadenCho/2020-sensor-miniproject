@@ -176,7 +176,7 @@ def cli():
         times = temp.index
         #temp.hist()
         plt.figure(4)
-        plt.hist(np.diff(times.values).astype(np.int64) // 1000000000, bins = 100)
+        plt.hist(np.diff(times.values).astype(np.int64) // 1000000000)
         plt.xlabel("Time (seconds)")
         plt.ylabel("Occurrences")
         plt.title("Time Intervals between Sensor Readings")
