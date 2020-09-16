@@ -4,6 +4,7 @@ import pandas as pd
 import numpy as np
 import json
 from datetime import datetime
+import statistics as ss
 
 
 parser = argparse.ArgumentParser()
@@ -49,9 +50,9 @@ for k in temp_values:                  #index through all temperature data point
 percentage = tempoutliers/totaltempvals                         #percentage of bad points/total
 print("The percent of bad data points is ", percentage)
 
-tempmean = newtemp_values.mean()                                   #mean of temperature values with outlier points removed
+tempmean = ss.mean(newtemp_values)                                   #mean of temperature values with outlier points removed
 print("The mean of the temperature values is ", tempmean)
 
-tempvar = newtemp_values.var()                                     #variance of temperature values with outlier points removed
+tempvar = ss.variance(newtemp_values)                                     #variance of temperature values with outlier points removed
 print("The variance of the temperature values is ", tempvar)    
     
