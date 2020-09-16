@@ -181,7 +181,8 @@ def cli():
         plt.ylabel("Occurrences")
         plt.title("Time Intervals between Sensor Readings")
         
-       
+        print(times.values)   
+    
         plt.show()
         
         os.remove("data.txt")
